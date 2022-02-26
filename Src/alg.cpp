@@ -5,31 +5,31 @@
 
 bool checkPrime(uint64_t value) {
   if (value > 1) {
-    for (int i = 2; i < value; i++)
+    for (int i = 2; i < value; i++) {
       if (value % i == 0)
         return false;
+    }
     return true;
-  }else
+  }
+  else {
     return false;
+  }
 }
 
 uint64_t nPrime(uint64_t n) {
-  int t = 0;
-  while (n != 0) { 
-    Prime_n++;
-    if (checkPrime(t) == true)
-      n--;
+  int currentNum = 1;
+  for (int numPrime = 0; numPrime < n; currentNum++) {
+    if (checkPrime(currentNum)) {
+      numPrime++;
+    }
   }
-  return t;
+  return currentNum - 1;
 }
 
 uint64_t nextPrime(uint64_t value) {
-  for (int i = 2; i <= value/2; i++)
-    if (value % i == 0)
-      return false;
-  return true;
-  while (!nextPrime(value))
+  do {
     value++;
+  } while (!checkPrime(value));
   return value;
 }
 
